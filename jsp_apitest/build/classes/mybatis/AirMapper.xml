@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="AirMapper">
+ 	<insert id="insert">
+ 		INSERT INTO air(sn, dataDate, districtName, moveName, itemCode, issueGbn,
+ 			issueDate, issueTime, issueVal, clearDate, clearTime, clearVal)
+		VALUES (#{sn}, #{dataDate}, #{districtName}, #{moveName}, #{itemCode}, #{issueGbn},
+			#{issueDate}, #{issueTime}, #{issueVal}, #{clearDate}, #{clearTime}, #{clearVal})
+ 	</insert>
+ 	
+ 	<select id="selectOne" resultType="dto.Air">
+ 		SELECT * FROM air
+		WHERE sn = #{sn}
+ 	</select>
+ 	
+ 	<select id="selectList" resultType="dto.Air">
+ 		SELECT * FROM air
+		WHERE districtName = #{districtName}
+		ORDER BY dataDate DESC
+ 	</select>
+ 	
+ 	
+ 	
+ </mapper>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <!-- null값 허용하게 설정 -->
+  <settings>
+  	<setting name="jdbcTypeForNull" value="NULL"/>  
+  </settings>
+  <!-- db접속정보 -->
+  <environments default="development">
+    <environment id="development">
+    <!-- MANAGED : 컨테이너(was-tomcat)가 트랜잭션을 관리 -->
+    <!-- transactionManager 타입을 jdbc로 설정하면 소스에서 개발자가 직접 커밋롤백등 트랜잭션 관리 -->
+      <transactionManager type="JDBC"/>
+      <!-- UNPOOLED : 커넥션풀을 사용하지 않고 DB와 연결할때마다 커넥션을 만듦 -->
+      <dataSource type="UNPOOLED">
+        <property name="driver" value="oracle.jdbc.OracleDriver"/>
+        <property name="url" value="jdbc:oracle:thin:@//localhost:1521/xe"/>
+        <property name="username" value="hr"/>
+        <property name="password" value="hr"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <!-- 매퍼파일들 매핑 -->
+  <mappers>
+  	<mapper resource="mybatis/CovidMapper.xml"/>
+  	<mapper resource="mybatis/CountryMapper.xml"/>
+  </mappers>
+</configuration>
